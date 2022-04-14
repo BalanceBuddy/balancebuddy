@@ -1,0 +1,19 @@
+{
+  "name": "balancebuddy",
+  "version": "1.0.0",
+  "description": "BalanceBuddy website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/besmelh/balancebuddy.git"
+  },
+  "author": "Besmelh Alshaalan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/besmelh/balancebuddy/issues"
+  },
+  "homepage": "https://github.com/besmelh/balancebuddy#readme"
+}

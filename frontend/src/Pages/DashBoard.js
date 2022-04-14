@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-// import Container from 'react-bootstrap/Container'
-// import Row from 'react-bootstrap/Row'
-// import Col from 'react-bootstrap/Col'
+import allTasks from '../allTasks'
 
 const Row = styled.div`
   display: flex;
@@ -27,14 +25,17 @@ const MotivationDiv = styled.div`
 ` */
 
 function DashBoard() {
+
+  var level = allTasks.find(x => x.level === 1)
+  var task = level.levelTasks.find(x => x.task_id === '3')
+
   return (
     <>
       <h1>Dashboard</h1>
       <Row>
         <Col>
-          <h2>Task</h2>
-          <p>lorem ipsum</p>
-          <p>lorem ipsum</p>
+          <h2>{task.title}</h2>
+          <p>{task.description}</p>
         </Col>
 
         <Col>
