@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useEffect } from 'react'
 import styled from 'styled-components'
-import allTasks from '../allTasks'
+import axios from 'axios'
 
 const Row = styled.div`
   display: flex;
@@ -26,8 +27,17 @@ const MotivationDiv = styled.div`
 
 function DashBoard() {
 
-  var level = allTasks.find(x => x.level === 1)
-  var task = level.levelTasks.find(x => x.task_id === '3')
+  const[task, setTask] = useState([])
+
+  useEffect(() => {
+    const fetchTask = async () => {
+      const {data} = await axios.get('/api/allTasks/1/2')
+      setTask(data)
+    }
+
+    fetchTask()
+  }, [])
+
 
   return (
     <>
