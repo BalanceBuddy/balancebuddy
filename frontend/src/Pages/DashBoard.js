@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import Header from '../Components/Header'
+import Footer from '../Components/Footer'
 
 const Row = styled.div`
   display: flex;
@@ -39,6 +41,7 @@ function DashBoard() {
 
   return (
     <>
+      <Header/>
       <h1>Dashboard</h1>
       <Row>
         <Col>
@@ -51,6 +54,7 @@ function DashBoard() {
           <p>lorem ipsum</p>
         </Col>
       </Row>
+      <Footer/>
     </>
   );
 }
