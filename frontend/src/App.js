@@ -3,6 +3,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import DashBoard from './Pages/DashBoard';
 import Signup from './Pages/Signup';
+import Login from './Pages/Login';
 import Settings from './Pages/Settings';
 import { Routes, Route, Link } from "react-router-dom";
 import styled from 'styled-components';
@@ -26,6 +27,7 @@ function App() {
       <SignUpContainer>
         <Routes>
           <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </SignUpContainer>
 
