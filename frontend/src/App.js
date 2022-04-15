@@ -4,6 +4,9 @@ import Footer from './Components/Footer';
 import DashBoard from './Pages/DashBoard';
 import Signup from './Pages/Signup';
 import Login from './Pages/Login';
+import CalendarAccess from './Pages/CalendarAccess';
+import CalendarAccepted from './Pages/CalendarAccepted';
+import CalendarDenied from './Pages/CalendarDenied';
 import Settings from './Pages/Settings';
 import { Routes, Route, Link } from "react-router-dom";
 import styled from 'styled-components';
@@ -28,6 +31,10 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/calendar-access" element={<CalendarAccess />} />
+          <Route path="/calendar-access-accepted" element={<CalendarAccepted />} />
+          <Route path="/calendar-access-denied" element={<CalendarDenied />} />
+
         </Routes>
       </SignUpContainer>
 
