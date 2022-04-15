@@ -12,7 +12,7 @@ const NavBar = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0 150px;
-  padding 10px 0;
+  padding 0px 0;
 `
 
 const Logo = styled.div`
