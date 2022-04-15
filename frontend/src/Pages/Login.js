@@ -67,7 +67,7 @@ function Signup() {
             <SignupButton>Log In</SignupButton>
             <Links>
               <a href="forgot-password">Forgot password?</a>
-              <p>New to BalanceBuddy? <a href="login">Sign Up</a></p>
+              <p>New to BalanceBuddy? <a href="/signup">Sign Up</a></p>
             </Links>
 
         </Col2>

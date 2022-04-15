@@ -69,7 +69,7 @@ function Signup() {
             <SignupButton>Sign Up</SignupButton>
             <Links>
               <a href="forgot-password">Forgot password?</a>
-              <p>Already have an account? <a href="login">Log In</a></p>
+              <p>Already have an account? <a href="/login">Log In</a></p>
             </Links>
 
         </Col2>
