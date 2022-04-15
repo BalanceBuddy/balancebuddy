@@ -15,35 +15,14 @@ const Col = styled.div`
   border: 2px solid black;
 `;
 
-/* const TaskDiv = styled.div`
-  background-color: green;
-  width: 45%;
-`
-
-const MotivationDiv = styled.div`
-  background-color: blue;
-  width: 45%;
-` */
-
 function DashBoard() {
-  const [task, setTask] = useState([]);
-
-  useEffect(() => {
-    const fetchTask = async () => {
-      const { data } = await axios.get('/api/tasks/1');
-      setTask(data);
-    };
-
-    fetchTask();
-  }, []);
-
   return (
     <>
       <h1>Dashboard</h1>
       <Row>
         <Col>
-          <h2>{task.title}</h2>
-          <p>{task.description}</p>
+          <h2>title</h2>
+          <p>description lorem ipsum</p>
         </Col>
 
         <Col>
