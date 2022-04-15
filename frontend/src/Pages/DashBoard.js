@@ -1,19 +1,19 @@
-import React, {useState} from 'react'
-import { useEffect } from 'react'
-import styled from 'styled-components'
-import axios from 'axios'
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
 
 const Row = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between
-`
+  justify-content: space-between;
+`;
 
-const Col = styled.div `
+const Col = styled.div`
   width: 45%;
   border-radius: 10px;
   border: 2px solid black;
-`
+`;
 
 /* const TaskDiv = styled.div`
   background-color: green;
@@ -26,18 +26,16 @@ const MotivationDiv = styled.div`
 ` */
 
 function DashBoard() {
-
-  const[task, setTask] = useState([])
+  const [task, setTask] = useState([]);
 
   useEffect(() => {
     const fetchTask = async () => {
-      const {data} = await axios.get('/api/allTasks/1/2')
-      setTask(data)
-    }
+      const { data } = await axios.get('/api/tasks/1');
+      setTask(data);
+    };
 
-    fetchTask()
-  }, [])
-
+    fetchTask();
+  }, []);
 
   return (
     <>
@@ -52,11 +50,9 @@ function DashBoard() {
           <h2>Motivation</h2>
           <p>lorem ipsum</p>
         </Col>
-
       </Row>
-
     </>
-  )
+  );
 }
 
 export default DashBoard;
