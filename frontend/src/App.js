@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { Component }  from 'react';
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import DashBoard from "./Pages/DashBoard";
