@@ -66,7 +66,7 @@ function Signup() {
             <label for="inputConfirmPassword">Confirm Password</label>
             <input type="email" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password"></input>
             </Form>
-            <SignupButton>Sign Up</SignupButton>
+            <a href="calendar-access"><SignupButton>Sign Up</SignupButton></a>
             <Links>
               <a href="forgot-password">Forgot password?</a>
               <p>Already have an account? <a href="/login">Log In</a></p>
