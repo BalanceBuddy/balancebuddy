@@ -30,7 +30,7 @@ function DashBoard() {
 
   useEffect(() => {
     const fetchTask = async () => {
-      const { data } = await axios.get('/api/tasks/1');
+      const { data } = await axios.get('/api/tasks/625a6fb7b91e9e6fc15128fd');
       setTask(data);
     };
 
