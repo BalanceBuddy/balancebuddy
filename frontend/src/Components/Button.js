@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const BigButton = styled.button`
+const StyledButton = styled.button`
   background-color: #62bdca;
-  justify-content: center;
-  height: 40px;
+  height: 30px;
   width: 100%;
   border: 0px;
   border-radius: 5px;
   margin-top: 5px;
   margin-bottom: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
   font-size: 16px;
 
   :hover {
@@ -17,8 +18,8 @@ const BigButton = styled.button`
   }
 `;
 
-function SignupButton({ children }) {
-  return <BigButton>{children}</BigButton>;
+function Button({ children }) {
+  return <StyledButton>{children}</StyledButton>;
 }
 
-export default SignupButton;
+export default Button;

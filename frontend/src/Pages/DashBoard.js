@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import Header from '../Components/Header'
-import Footer from '../Components/Footer'
+import DefaultContainer from '../Components/DefaultContainer';
 
 const Row = styled.div`
   display: flex;
@@ -16,8 +15,7 @@ const Col = styled.div`
 
 function DashBoard() {
   return (
-    <>
-      <Header/>
+    <DefaultContainer>
       <h1>Dashboard</h1>
       <Row>
         <Col>
@@ -30,8 +28,7 @@ function DashBoard() {
           <p>lorem ipsum</p>
         </Col>
       </Row>
-      <Footer/>
-    </>
+    </DefaultContainer>
   );
 }
 

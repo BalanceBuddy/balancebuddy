@@ -1,15 +1,12 @@
-import React from 'react'
-import Header from '../Components/Header'
-import Footer from '../Components/Footer'
+import React from 'react';
+import DefaultContainer from '../Components/DefaultContainer';
 
 function Settings() {
   return (
-   
-    <div>
-       <Header/>
-        <Footer/>
-    </div>
-  )
+    <DefaultContainer>
+      <h1>Settings</h1>
+    </DefaultContainer>
+  );
 }
 
-export default Settings
+export default Settings;
