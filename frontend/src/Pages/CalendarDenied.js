@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Side from '../Components/SignupBar';
-import SignupButton from '../Components/SignupButton'
-import Form from '../Components/Form';
 
 const WholeContainer = styled.div`
     display: flex;

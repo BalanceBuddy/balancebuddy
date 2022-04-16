@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Side from '../Components/SignupBar';
-import SignupButton from '../Components/SignupButton'
 import AnswerGroup from '../Components/AssessmentAnswerGroup';
 
 const WholeContainer = styled.div`
