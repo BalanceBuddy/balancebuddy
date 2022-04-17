@@ -23,12 +23,12 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/calendar-access' element={<CalendarAccess />} />
         <Route
-          path='/calendar-access/accepted'
+          path='/calendar-access-accepted'
           element={<CalendarAccepted />}
         />
-        <Route path='/calendar-access/denied' element={<CalendarDenied />} />
-        <Route path='/assessment/1' element={<AssessmentPageOne />} />
-        <Route path='/assessment/2' element={<AssessmentPageTwo />} />
+        <Route path='/calendar-access-denied' element={<CalendarDenied />} />
+        <Route path='/assessment-page1' element={<AssessmentPageOne />} />
+        <Route path='/assessment-page2' element={<AssessmentPageTwo />} />
         <Route path='/loading-dashboard' element={<LoadingDashboard />} />
       </Routes>
     </div>
