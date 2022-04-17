@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+import DefaultContainer from '../Components/DefaultContainer';
 
 const Row = styled.div`
   display: flex;
@@ -15,35 +13,25 @@ const Col = styled.div`
   border: 2px solid black;
 `;
 
-/* const TaskDiv = styled.div`
-  background-color: green;
-  width: 45%;
-`
-
-const MotivationDiv = styled.div`
-  background-color: blue;
-  width: 45%;
-` */
-
 function DashBoard() {
-  const [task, setTask] = useState([]);
+  // const [task, setTask] = useState([]);
 
-  useEffect(() => {
-    const fetchTask = async () => {
-      const { data } = await axios.get('/api/tasks/625a6fb7b91e9e6fc15128fd');
-      setTask(data);
-    };
+  // useEffect(() => {
+  //   const fetchTask = async () => {
+  //     const { data } = await axios.get('/api/tasks/625a6fb7b91e9e6fc15128fd');
+  //     setTask(data);
+  //   };
 
-    fetchTask();
-  }, []);
+  //   fetchTask();
+  // }, []);
 
   return (
-    <>
+    <DefaultContainer>
       <h1>Dashboard</h1>
       <Row>
         <Col>
-          <h2>{task.title}</h2>
-          <p>{task.description}</p>
+          <h2>title</h2>
+          <p>description lorem ipsum</p>
         </Col>
 
         <Col>
@@ -51,7 +39,7 @@ function DashBoard() {
           <p>lorem ipsum</p>
         </Col>
       </Row>
-    </>
+    </DefaultContainer>
   );
 }
 
