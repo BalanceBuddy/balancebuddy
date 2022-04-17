@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 import { Slide } from 'react-slideshow-image';
 import Slideshow from './Slideshow';
-import styled from 'styled-components';
 import DefaultContainer from '../Components/DefaultContainer';
 
 const Row = styled.div`
@@ -204,4 +202,4 @@ function DashBoard() {
   );
 }
 
-export default App;
+export default DashBoard;
