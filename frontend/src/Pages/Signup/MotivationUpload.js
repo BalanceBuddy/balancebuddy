@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactDOM from "react-dom";
 import WholeContainer from '../../Components/WholeContainer';
 import Button from '../../Components/Button';
-import ImageUpload from "./ImageUpload";
 import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import axios from 'axios';
 
 const itemData = [
     {
@@ -58,11 +57,28 @@ const itemData = [
     },
   ];
 
+const state = {
+    selectedFile: null
+}
+
+const fileSelectedHandler = event => {
+    this.setState({selectedFile: event.target.files[0]})
+}
+
+const fileUploadHandler = () =>  {
+    axios.post()
+}
+
 function Signup() {
+
   return (
     <>
       <WholeContainer assessment>
         <h2>Motivation Upload</h2>
+        <input type="file" onChange={fileSelectedHandler} />
+        <Button onClick={fileUploadHandler}>Upload</Button>
+        {/* <Button variant="contained" component="label">Upload File<input type="file" onChange={fileSelectedHandler} hidden/>
+        </Button> */}
         <Box sx={{ width: 1, height: 4/5, overflowY: 'scroll' }}>
             <ImageList variant="masonry" cols={4} gap={8}>
                 {itemData.map((item) => (

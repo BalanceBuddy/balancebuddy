@@ -6,6 +6,7 @@ import Login from './Pages/Login';
 
 import Signup from './Pages/Signup/Signup';
 import MotivationUpload from './Pages/Signup/MotivationUpload.js';
+import ImageUpload from './Pages/Signup/ImageUpload';
 import CalendarAccess from './Pages/Signup/CalendarAccess';
 import CalendarAccepted from './Pages/Signup/CalendarAccepted';
 import CalendarDenied from './Pages/Signup/CalendarDenied';
@@ -23,6 +24,7 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/motivation-upload' element={<MotivationUpload />} />
+        <Route path='/image-upload' element={<ImageUpload />} />
         <Route path='/calendar-access' element={<CalendarAccess />} />
         <Route path='/calendar-access-accepted'element={<CalendarAccepted />} />
         <Route path='/calendar-access-denied' element={<CalendarDenied />} />
