@@ -1,9 +1,9 @@
 import './App.css';
+import { Routes, Route } from 'react-router-dom';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import DashBoard from './Pages/DashBoard';
 import Settings from './Pages/Settings';
 import Login from './Pages/Login';
-
 import Signup from './Pages/Signup/Signup';
 import CalendarAccess from './Pages/Signup/CalendarAccess';
 import CalendarAccepted from './Pages/Signup/CalendarAccepted';
@@ -11,7 +11,7 @@ import CalendarDenied from './Pages/Signup/CalendarDenied';
 import AssessmentPageOne from './Pages/Signup/AssessmentPageOne';
 import AssessmentPageTwo from './Pages/Signup/AssessmentPageTwo';
 import LoadingDashboard from './Pages/Signup/LoadingDashboard';
-import { Routes, Route } from 'react-router-dom';
+import Backend from './Pages/Backend';
 
 function App() {
   return (
@@ -30,6 +30,8 @@ function App() {
         <Route path='/assessment-page1' element={<AssessmentPageOne />} />
         <Route path='/assessment-page2' element={<AssessmentPageTwo />} />
         <Route path='/loading-dashboard' element={<LoadingDashboard />} />
+
+        <Route path='/backend' element={<Backend />} />
       </Routes>
     </div>
   );
