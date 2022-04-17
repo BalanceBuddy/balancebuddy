@@ -1,4 +1,5 @@
 import './App.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import DashBoard from './Pages/DashBoard';
 import Settings from './Pages/Settings';
 import Login from './Pages/Login';
@@ -18,7 +19,6 @@ function App() {
       <Routes>
         <Route path='/' element={<DashBoard />} />
         <Route path='/settings' element={<Settings />} />
-
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
         <Route path='/calendar-access' element={<CalendarAccess />} />
