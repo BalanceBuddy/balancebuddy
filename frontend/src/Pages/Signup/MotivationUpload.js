@@ -10,7 +10,7 @@ function Signup() {
     <>
       <WholeContainer>
         <h2>MotivationUpload</h2>
-        <Button>press me</Button>
+        
       </WholeContainer>
     </>
   );

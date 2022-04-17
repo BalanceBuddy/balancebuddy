@@ -46,11 +46,11 @@ function Signup() {
             placeholder='Confirm Password'
           ></input>
         </Form>
-        <a href='calendar-access'>
+        <a href='/calendar-access'>
           <SignupButton>Sign Up</SignupButton>
         </a>
         <Links>
-          <a href='forgot-password'>Forgot password?</a>
+          <a href='/forgot-password'>Forgot password?</a>
           <p>
             Already have an account? <a href='/login'>Log In</a>
           </p>

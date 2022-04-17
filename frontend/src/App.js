@@ -19,16 +19,15 @@ function App() {
       <Routes>
         <Route path='/' element={<DashBoard />} />
         <Route path='/settings' element={<Settings />} />
-
-        <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/motivation-upload' element={<MotivationUpload />} />
+        <Route path='/signup' element={<Signup />} />
         <Route path='/calendar-access' element={<CalendarAccess />} />
-        <Route path='/calendar-access/accepted'element={<CalendarAccepted />}
-        />
-        <Route path='/calendar-access/denied' element={<CalendarDenied />} />
-        <Route path='/assessment/1' element={<AssessmentPageOne />} />
-        <Route path='/assessment/2' element={<AssessmentPageTwo />} />
+        <Route path='/calendar-access-accepted' element={<CalendarAccepted />} />
+        <Route path='/calendar-access-denied' element={<CalendarDenied />} />
+        <Route path='/motivation-upload' element={<MotivationUpload />} />
+        <Route path='/motivation-upload' element={<MotivationUpload />} />
+        <Route path='/assessment-page1' element={<AssessmentPageOne />} />
+        <Route path='/assessment-page2' element={<AssessmentPageTwo />} />
         <Route path='/loading-dashboard' element={<LoadingDashboard />} />
       </Routes>
     </div>
