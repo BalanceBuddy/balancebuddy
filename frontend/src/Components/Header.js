@@ -32,6 +32,7 @@ const ProfilePicture = styled.img`
 `;
 
 function Header() {
+
   return (
     <NavBarContainer>
       <NavBar>

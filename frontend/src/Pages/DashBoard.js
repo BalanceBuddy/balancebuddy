@@ -1,11 +1,11 @@
-<<<<<<< Updated upstream
-import React, { useState } from "react";
-import { useEffect } from "react";
-import styled from "styled-components";
-import axios from "axios";
-import Carousel from "react-bootstrap/Carousel";
-import { Slide } from "react-slideshow-image";
-import Slideshow from "./Slideshow";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import Carousel from 'react-bootstrap/Carousel';
+import { Slide } from 'react-slideshow-image';
+import Slideshow from './Slideshow';
+import styled from 'styled-components';
+import DefaultContainer from '../Components/DefaultContainer';
 
 const Row = styled.div`
   display: flex;
@@ -16,10 +16,10 @@ const Row = styled.div`
 `;
 // Motivation Board
 const slideImages = [
-  "../Assets/motivation/puppy.jpeg",
-  "../Assets/motivation/love.jpeg",
-  "../Assets/motivation/mansion.jpeg",
-  "../Assets/motivation/goggins.jpeg",
+  '../Assets/motivation/puppy.jpeg',
+  '../Assets/motivation/love.jpeg',
+  '../Assets/motivation/mansion.jpeg',
+  '../Assets/motivation/goggins.jpeg',
 ];
 
 const properties = {};
@@ -104,32 +104,32 @@ const now = 60;
 
 function DashBoard() {
   return (
-    <>
-      {/* <h1>Dashboard</h1> */}
+    <DefaultContainer>
+      <h1>Dashboard</h1>
       <Row>
         <Col>
-          <div className="task-container">
+          <div className='task-container'>
             <div>
               <h2>Current Task</h2>
-              <p className="text">
+              <p className='text'>
                 Update resume so that all recent experiences have been added.
                 Ensure that descriptions include key action words and can be
                 quantifiable.
               </p>
             </div>
 
-            <div className="task-item">
-              <button type="button" className="button">
+            <div className='task-item'>
+              <button type='button' className='button'>
                 Completed Task
               </button>
-              <button type="button" className="button">
+              <button type='button' className='button'>
                 Change Task
               </button>
             </div>
           </div>
-          <div className="task-container">
+          <div className='task-container'>
             <div>
-              <h2 className="above">Resources</h2>
+              <h2 className='above'>Resources</h2>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
                 viverra lectus.
@@ -153,9 +153,9 @@ function DashBoard() {
             <Carousel>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
-                  src="holder.js/800x400?text=First slide&bg=373940"
-                  alt="First slide"
+                  className='d-block w-100'
+                  src='holder.js/800x400?text=First slide&bg=373940'
+                  alt='First slide'
                 />
                 <Carousel.Caption>
                   <h3>First slide label</h3>
@@ -166,9 +166,9 @@ function DashBoard() {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
-                  src="holder.js/800x400?text=Second slide&bg=282c34"
-                  alt="Second slide"
+                  className='d-block w-100'
+                  src='holder.js/800x400?text=Second slide&bg=282c34'
+                  alt='Second slide'
                 />
 
                 <Carousel.Caption>
@@ -180,9 +180,9 @@ function DashBoard() {
               </Carousel.Item>
               <Carousel.Item>
                 <img
-                  className="d-block w-100"
-                  src="holder.js/800x400?text=Third slide&bg=20232a"
-                  alt="Third slide"
+                  className='d-block w-100'
+                  src='holder.js/800x400?text=Third slide&bg=20232a'
+                  alt='Third slide'
                 />
 
                 <Carousel.Caption>
@@ -200,47 +200,7 @@ function DashBoard() {
       <Row>
         <h1>Roadmap</h1>
       </Row>
-    </>
-=======
-import "./App.css";
-import DashBoard from "./Pages/DashBoard";
-import Settings from "./Pages/Settings";
-import Login from "./Pages/Login";
-
-import Signup from "./Pages/Signup/Signup";
-import CalendarAccess from "./Pages/Signup/CalendarAccess";
-import CalendarAccepted from "./Pages/Signup/CalendarAccepted";
-import CalendarDenied from "./Pages/Signup/CalendarDenied";
-import AssessmentPageOne from "./Pages/Signup/AssessmentPageOne";
-import AssessmentPageTwo from "./Pages/Signup/AssessmentPageTwo";
-import LoadingDashboard from "./Pages/Signup/LoadingDashboard";
-
-import React, { Component }  from 'react';
-
-
-import { Routes, Route } from "react-router-dom";
-
-function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<DashBoard />} />
-        <Route path="/settings" element={<Settings />} />
-
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/calendar-access" element={<CalendarAccess />} />
-        <Route
-          path="/calendar-access/accepted"
-          element={<CalendarAccepted />}
-        />
-        <Route path="/calendar-access/denied" element={<CalendarDenied />} />
-        <Route path="/assessment/1" element={<AssessmentPageOne />} />
-        <Route path="/assessment/2" element={<AssessmentPageTwo />} />
-        <Route path="/loading-dashboard" element={<LoadingDashboard />} />
-      </Routes>
-    </div>
->>>>>>> Stashed changes
+    </DefaultContainer>
   );
 }
 
