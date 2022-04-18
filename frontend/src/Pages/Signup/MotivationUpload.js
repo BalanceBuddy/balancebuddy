@@ -5,6 +5,8 @@ import Box from '@mui/material/Box';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import axios from 'axios';
+import styled from 'styled-components'
+import uploadImage from '../../Assets/uploadImage.png'
 
 const itemData = [
     {
@@ -69,6 +71,8 @@ const fileUploadHandler = () =>  {
     axios.post()
 }
 
+
+
 function Signup() {
 
   return (
@@ -79,18 +83,38 @@ function Signup() {
         <Button onClick={fileUploadHandler}>Upload</Button>
         {/* <Button variant="contained" component="label">Upload File<input type="file" onChange={fileSelectedHandler} hidden/>
         </Button> */}
-        <Box sx={{ width: 1, height: 4/5, overflowY: 'scroll' }}>
-            <ImageList variant="masonry" cols={4} gap={8}>
-                {itemData.map((item) => (
-                <ImageListItem key={item.img}>
-                    <img
-                    src={`${item.img}?w=248&fit=crop&auto=format`}
-                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                    alt={item.title}
-                    loading="lazy"
-                    />
-                </ImageListItem>))}
-            </ImageList>
+        {/* <Box sx={{backgroundImage: `uploadImage`, width: 1, height: 5/6 }}> */}
+        <Box style={{
+            backgroundImage: "uploadImage",
+            backgroundSize: "cover",
+            height: "100vh",
+            color: "#f5f5f5"}}
+        >
+
+            <Box sx={{width: 1, height: 1, overflowY: 'scroll' }}>
+                <ImageList variant="masonry" cols={4} gap={8}>
+                    {itemData.map((item) => (
+                    <ImageListItem key={item.img}>
+                        <img
+                        src={`${item.img}?w=248&fit=crop&auto=format`}
+                        srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                        alt={item.title}
+                        loading="lazy"
+                        />
+                    </ImageListItem>))}
+                </ImageList>
+            </Box>
+            {/* <Box
+                component="img"
+                sx={{
+                height: 233,
+                width: 350,
+                maxHeight: { xs: 233, md: 167 },
+                maxWidth: { xs: 350, md: 250 },
+                }}
+                src={uploadImage}
+            /> */}
+            {/* <image src={uploadImage} position="absolute" bottom="0" /> */}
         </Box>
       </WholeContainer>
     </>
