@@ -12,6 +12,7 @@ import AssessmentPageOne from './Pages/Signup/AssessmentPageOne';
 import AssessmentPageTwo from './Pages/Signup/AssessmentPageTwo';
 import LoadingDashboard from './Pages/Signup/LoadingDashboard';
 import Backend from './Pages/Backend';
+import Backend2 from './Pages/Backend2';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/loading-dashboard' element={<LoadingDashboard />} />
 
         <Route path='/backend' element={<Backend />} />
+        <Route path='/backend/2' element={<Backend2 />} />
       </Routes>
     </div>
   );

@@ -1,55 +1,60 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { listTasks, listTaskDetails } from '../Actions/taskActions';
 
 import DefaultContainer from '../Components/DefaultContainer';
+import CircularProgress from '@mui/material/CircularProgress';
 
 function Backend() {
-  const [task, setTask] = useState([]);
-  const [resources, setResources] = useState([]);
+  const dispatch = useDispatch();
+
+  const taskList = useSelector((state) => state.taskList);
+  const { loading, error, tasks } = taskList;
+
+  //   const taskDetails = useSelector((state) => state.taskDetails);
+  //   const { loading, error, state } = taskDetails;
 
   useEffect(() => {
-    const fetchTask = async () => {
-      //   const { user } = await axios.get('/api/tasks/625a6fb7b91e9e6fc15128fd');
-      const { data } = await axios.get('/api/tasks/625a6fb7b91e9e6fc15128fd');
-      setTask(data);
-      const listResources = task.resources.map((rsrc) => (
-        <p>{rsrc.description}</p>
-      ));
-      setResources(task.resources.map((rsrc) => <p>{rsrc}</p>));
-    };
+    dispatch(listTasks());
+    dispatch(listTaskDetails('625a6fb7b91e9e6fc15128fd'));
+  }, [dispatch]);
 
-    fetchTask();
-  }, []);
-
-  //   useEffect(() => {
-  //     const listResources = task.resources.map((rsrc) => (
-  //       <p>{rsrc.description}</p>
-  //     ));
-  //     setResources(task.resources.map((rsrc) => <p>{rsrc}</p>));
-  //     console.log(resources);
-  //   }, [task]);
-  // const listResources = (
-  //   <div>
-  //     {task.resources.map((post) => (
-  //       <li key={post.id}>{post.title}</li>
-  //     ))}
-  //   </div>
-  // );
-
-  console.log(resources);
-  //   const listResources = task.resources.map((rsrc) => <p>{rsrc.description}</p>);
   return (
     <DefaultContainer>
-      <h2>{task.title}</h2>
-      <p>{task.description}</p>
-      {/* <div>{listResources}</div> */}
-      {/* {task.resources.map((rsrc) => {
-        <p>{rsrc.description}</p>;
-      })} */}
+      {loading ? (
+        <CircularProgress />
+      ) : error ? (
+        <h3>{error}</h3>
+      ) : (
+        <div>
+          {tasks.map((task) => (
+            <h3>{task.title}</h3>
+          ))}
+        </div>
+      )}
 
-      {/* {task.resources.map((rsrc) => {
-        return <div>I am one Object in the Array</div>;
-      })} */}
+      {/* {loading ? (
+        <CircularProgress />
+      ) : error ? (
+        <h3>{error}</h3>
+      ) : (
+        <div>
+          {/* {task.resources.map((rsrc) => (
+            <h3>{rsrc.details}</h3>
+          ))}
+          <h3>{task.title}</h3>
+        </div>
+      )} */}
+
+      {/* <h2>{task.title}</h2>
+      <p>{task.description}</p>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        {task.resources?.map((rsrc) => (
+          <a target='_blank' href={rsrc.url}>
+            {rsrc.description}
+          </a>
+        ))}
+      </div> */}
     </DefaultContainer>
   );
 }
