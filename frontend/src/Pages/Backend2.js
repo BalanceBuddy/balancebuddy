@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { listTaskDetails } from '../Actions/taskActions';
+import { listUserCurrentTask } from '../Actions/userActions';
 
 import DefaultContainer from '../Components/DefaultContainer';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -8,11 +9,14 @@ import CircularProgress from '@mui/material/CircularProgress';
 function Backend2() {
   const dispatch = useDispatch();
 
-  const taskDetails = useSelector((state) => state.taskDetails);
-  const { loading, error, task } = taskDetails;
+  // const taskDetails = useSelector((state) => state.taskDetails);
+  // const { loading, error, task } = taskDetails;
+
+  const currentTask = useSelector((state) => state.userCurrentTask);
+  const { loading, error, task } = currentTask;
 
   useEffect(() => {
-    dispatch(listTaskDetails('625cffbd40f58c0702a35e00'));
+    dispatch(listUserCurrentTask('625cffbd40f58c0702a35dfc'));
   }, [dispatch]);
 
   return (
@@ -23,6 +27,8 @@ function Backend2() {
         <h3>{error}</h3>
       ) : (
         <div>
+          <h3>{task.title}</h3>
+          <h3>{task._id}</h3>
           {task.resources.map((rsrc) => (
             <a href={rsrc.url} target='_blank' rel='noreferrer'>
               <h3 key={rsrc._id}>{rsrc.description}</h3>
@@ -30,6 +36,8 @@ function Backend2() {
           ))}
         </div>
       )}
+
+      <button>new task</button>
     </DefaultContainer>
   );
 }
