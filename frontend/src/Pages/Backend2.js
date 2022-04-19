@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { listTaskDetails } from '../Actions/taskActions';
 import {
   listUserCurrentTask,
@@ -12,12 +12,20 @@ import CircularProgress from '@mui/material/CircularProgress';
 function Backend2() {
   const userId = '625cffbd40f58c0702a35dfc';
   const dispatch = useDispatch();
+  const topLevelAction = () => (dispatch) => {
+    return Promise.all([
+      dispatch(userGenerateNewCurrentTask(userId)),
+      dispatch(listUserCurrentTask(userId)),
+    ]);
+  };
 
   // const taskDetails = useSelector((state) => state.taskDetails);
   // const { loading, error, task } = taskDetails;
+  // var currentTask = useSelector((state) => state.userCurrentTask);
 
-  const currentTask = useSelector((state) => state.userCurrentTask);
-  const { loading, error, task } = currentTask;
+  var thisState = useSelector((state) => state);
+  var currentTask = thisState.userCurrentTask;
+  var { loading, error, task } = currentTask;
 
   useEffect(() => {
     dispatch(listUserCurrentTask(userId));
@@ -25,7 +33,16 @@ function Backend2() {
 
   //generate new task on button click
   function newTask(e) {
-    dispatch(userGenerateNewCurrentTask(userId));
+    topLevelAction();
+    // dispatch(userGenerateNewCurrentTask(userId));
+    // dispatch(listUserCurrentTask(userId));
+    // var newGeneratedTask = thisState.generateNewTask;
+    // console.log(newGeneratedTask.user);
+  }
+
+  function refresh(e) {
+    dispatch(listUserCurrentTask(userId));
+    console.log(currentTask);
   }
 
   return (
@@ -47,6 +64,7 @@ function Backend2() {
       )}
 
       <button onClick={newTask}>new task</button>
+      <button onClick={refresh}>refresh</button>
     </DefaultContainer>
   );
 }
