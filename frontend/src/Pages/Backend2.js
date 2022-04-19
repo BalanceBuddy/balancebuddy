@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { listTaskDetails } from '../Actions/taskActions';
-import { listUserCurrentTask } from '../Actions/userActions';
+import {
+  listUserCurrentTask,
+  userGenerateNewCurrentTask,
+} from '../Actions/userActions';
 
 import DefaultContainer from '../Components/DefaultContainer';
 import CircularProgress from '@mui/material/CircularProgress';
 
 function Backend2() {
+  const userId = '625cffbd40f58c0702a35dfc';
   const dispatch = useDispatch();
 
   // const taskDetails = useSelector((state) => state.taskDetails);
@@ -16,8 +20,13 @@ function Backend2() {
   const { loading, error, task } = currentTask;
 
   useEffect(() => {
-    dispatch(listUserCurrentTask('625cffbd40f58c0702a35dfc'));
+    dispatch(listUserCurrentTask(userId));
   }, [dispatch]);
+
+  //generate new task on button click
+  function newTask(e) {
+    dispatch(userGenerateNewCurrentTask(userId));
+  }
 
   return (
     <DefaultContainer>
@@ -37,7 +46,7 @@ function Backend2() {
         </div>
       )}
 
-      <button>new task</button>
+      <button onClick={newTask}>new task</button>
     </DefaultContainer>
   );
 }
