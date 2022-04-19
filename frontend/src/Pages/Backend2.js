@@ -12,7 +12,7 @@ function Backend2() {
   const { loading, error, task } = taskDetails;
 
   useEffect(() => {
-    dispatch(listTaskDetails('625a6fb7b91e9e6fc15128fd'));
+    dispatch(listTaskDetails('625cffbd40f58c0702a35e00'));
   }, [dispatch]);
 
   return (
@@ -24,7 +24,7 @@ function Backend2() {
       ) : (
         <div>
           {task.resources.map((rsrc) => (
-            <a href={rsrc.url} target='_blank'>
+            <a href={rsrc.url} target='_blank' rel='noreferrer'>
               <h3 key={rsrc._id}>{rsrc.description}</h3>
             </a>
           ))}

@@ -1,17 +1,17 @@
 const users = [
   {
-    name: 'Besmelh Alshaalan',
-    email: 'balshaal@u.rochester.edu',
+    name: 'Tern Shepp',
+    email: 'tshepp@u.rochester.edu',
     isAdmin: true,
   },
   {
-    name: 'Fiona Au',
-    email: 'fau@u.rochester.edu',
-    isAdmin: false,
+    name: 'Bobby Yeah',
+    email: 'byeah@u.rochester.edu',
+    isAdmin: true,
   },
   {
-    name: 'Tasheem Brown',
-    email: 'tbrown5@u.rochester.edu',
+    name: 'Jasper Seams',
+    email: 'jseams@u.rochester.edu',
     isAdmin: false,
   },
 ];

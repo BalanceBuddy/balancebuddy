@@ -4,11 +4,12 @@ import colors from 'colors';
 import connectDB from './config/db.js';
 import levels from './data/levels.js';
 import taskRoutes from './routes/taskRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 dotenv.config();
 
-connectDB();
+await connectDB();
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get('/api/level/:level', (req, res) => {
 });
 
 app.use('/api/tasks', taskRoutes);
+app.use('/api/user', userRoutes);
 
 app.use(notFound);
 

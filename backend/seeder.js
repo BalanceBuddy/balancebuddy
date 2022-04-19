@@ -11,29 +11,13 @@ import connectDB from './config/db.js';
 
 dotenv.config();
 
-connectDB();
+await connectDB();
 
 const importData = async () => {
   try {
     await Level.deleteMany();
     await Task.deleteMany();
     await User.deleteMany();
-
-    // await Level.insertMany({
-    //   title: 'level1',
-    //     tasks: [tasks[0], tasks[1], tasks[2]],
-    // });
-    // await Level.insertMany({
-    //   title: 'level1',
-    //     tasks: [tasks[2], tasks[3], tasks[4], tasks[5]],
-    // });
-
-    // await Level.insertMany([
-    //   {
-    //     title: 'level1',
-    //     tasks: tasks,
-    //   },
-    // ]);
 
     await User.insertMany(users);
     await Task.insertMany(tasks);

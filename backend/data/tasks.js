@@ -51,6 +51,17 @@ const tasks = [
     ],
   },
   {
+    title: 'Network with people in the industry',
+    description:
+      'Networking allows interns to build valuable relationships as they begin their professional career. The contacts acquired and relationships developed can help students find a job after graduation, serve as a reference on their resumes, and even connect them with new opportunities down the road.',
+    resources: [
+      {
+        description: 'How to Network Your Way to a Summer Internship',
+        url: 'https://firsthand.co/blogs/job-search/how-to-network-your-way-to-a-great-summer-internship',
+      },
+    ],
+  },
+  {
     title: 'Bookmark 8 job postings',
     description:
       "Search for job postings and bookmark all the ones you're interested to apply to later. Try to bookmark at least 8-10 postings.",
@@ -78,6 +89,32 @@ const tasks = [
         description:
           'How to Apply to Internships Online and Not Get Lost in The...',
         url: 'https://www.wayup.com/guide/how-to-apply-to-internships-online-and-not-get-lost-in-space/',
+      },
+    ],
+  },
+  {
+    title: 'Prepare for a technical interview',
+    description:
+      'To prepare for your next technical interview, make sure to consider the tools and skills necessary for the role, study helpful books and digital publications, practice for the interview.',
+    resources: [
+      {
+        description: 'Tips for a Successful Internship Interview',
+        url: 'https://money.usnews.com/money/blogs/outside-voices-careers/articles/tips-for-a-successful-internship-interview',
+      },
+    ],
+  },
+  {
+    title: 'Prepare for a behavioral interview',
+    description:
+      "Behavioral interviewing is a technique that assesses a candidate's ability to meet the job requirements based on their previous experience. The technique is based on the idea that past performance is the best indicator of future performance.",
+    resources: [
+      {
+        description: 'Behavioral Interview Questions & How to Answer Them',
+        url: 'https://vcea.wsu.edu/student-success/internships-careers/resources/behavioral-interview-questions-how-to-answer-them/',
+      },
+      {
+        description: 'How To Prepare for a Behavioral Interview | Indeed.com',
+        url: 'https://www.indeed.com/career-advice/interviewing/how-to-prepare-for-a-behavioral-interview/',
       },
     ],
   },
