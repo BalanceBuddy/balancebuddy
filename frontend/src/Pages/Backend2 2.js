@@ -12,6 +12,16 @@ import CircularProgress from '@mui/material/CircularProgress';
 function Backend2() {
   const userId = '625cffbd40f58c0702a35dfc';
   const dispatch = useDispatch();
+  // const topLevelAction = () => (dispatch) => {
+  //   return Promise.all([
+  //     dispatch(userGenerateNewCurrentTask(userId)),
+  //     dispatch(listUserCurrentTask(userId)),
+  //   ]);
+  // };
+
+  // const taskDetails = useSelector((state) => state.taskDetails);
+  // const { loading, error, task } = taskDetails;
+  // var currentTask = useSelector((state) => state.userCurrentTask);
 
   var thisState = useSelector((state) => state);
   var currentTask = thisState.userCurrentTask;
@@ -23,12 +33,16 @@ function Backend2() {
 
   //generate new task on button click
   function newTask(e) {
+    // topLevelAction();
     dispatch(userGenerateNewCurrentTask(userId));
-    setTimeout(refreshTask, 500);
+    // dispatch(listUserCurrentTask(userId));
+    // var newGeneratedTask = thisState.generateNewTask;
+    // console.log(newGeneratedTask.user);
   }
 
-  function refreshTask() {
+  function refresh(e) {
     dispatch(listUserCurrentTask(userId));
+    console.log(currentTask);
   }
 
   return (
@@ -42,14 +56,15 @@ function Backend2() {
           <h3>{task.title}</h3>
           <h3>{task._id}</h3>
           {task.resources.map((rsrc) => (
-            <a key={rsrc._id} href={rsrc.url} target='_blank' rel='noreferrer'>
-              <h3>{rsrc.description}</h3>
+            <a href={rsrc.url} target='_blank' rel='noreferrer'>
+              <h3 key={rsrc._id}>{rsrc.description}</h3>
             </a>
           ))}
         </div>
       )}
 
       <button onClick={newTask}>new task</button>
+      <button onClick={refresh}>refresh</button>
     </DefaultContainer>
   );
 }
