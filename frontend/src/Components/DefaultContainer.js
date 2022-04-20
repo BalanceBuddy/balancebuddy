@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 const StyledContainer = styled.div`
-  padding-top: 40px;
+  padding-top: 20px;
   padding-bottom: 80px;
   width: 80%;
   margin: auto;
