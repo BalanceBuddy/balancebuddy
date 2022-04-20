@@ -7,8 +7,11 @@ import LinearProgress, {
 } from "@mui/material/LinearProgress";
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-  height: 10, width: 1135,
-  borderRadius: 5,
+  height: 15,
+  width: 110,
+  borderRadius: 10,
+  marginLeft: "56px",marginTop: "-50px",
+
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor:
       theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
@@ -26,7 +29,7 @@ function ProgressBar() {
         <br />
         <BorderLinearProgress
           variant="determinate"
-          value={50}
+          value={25}
           backgroundColor="dark"
         />
       </Box>

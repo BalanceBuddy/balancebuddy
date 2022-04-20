@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import DefaultContainer from "../Components/DefaultContainer";
 
-import CarouselSlide from "../Components/CarouselSlide";
 import ProgressBar from "../Components/ProgressBar";
+import Milestone from "../Components/Milestone";
+
 import Button from "../Components/Button";
+
+import CarouselSlide from "../Components/CarouselSlide";
+
+import { slideData } from "../Components/MotivationConstants";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Slide from "@material-ui/core/Slide";
 
 const Row = styled.div`
   display: flex;
@@ -13,7 +20,80 @@ const Row = styled.div`
   justify-content: space-between;
   display: flex;
   justify-content: center; // centers rodamap text
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color: #2196f3;
+    padding: 10px;
+  }
+  .start {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    display: inline-block;
+
+    padding: 20px;
+    margin-top: 20px;
+    margin-right: 80px;
+    border-radius: 44/2;
+  }
+
+  .circles {
+    height: 50px;
+    width: 50px;
+    background-color: lightgray;
+    border-radius: 50%;
+    display: inline-block;
+
+    padding: 20px;
+    margin-top: 20px;
+    margin-right: 80px;
+    border-radius: 44/2;
+  }
+  .miles {
+    justify-content: center;
+    display: inline-block;
+    margin-top: 5px;
+  }
 `;
+const Box = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  display: flex;
+  justify-content: center;
+
+  height: 150px;
+  width: 150px;
+  background-color: pink;
+  border-color: black;
+  border-radius: 5%;
+  display: flex;
+
+  text-align: center;
+  margin-top: 20px;
+  margin-right: 45px;
+
+  ul {
+    font-size: 16px;
+  }
+`;
+// fix motivation board
+const Even = styled.div`
+  padding-top: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+function Arrow(props) {
+  const { direction, clickFunction } = props;
+  const icon = direction === "left" ? <FaChevronLeft /> : <FaChevronRight />;
+
+  return <div onClick={clickFunction}>{icon}</div>;
+}
 
 const Col = styled.div`
   padding-left: 30px;
@@ -32,10 +112,9 @@ const Col = styled.div`
   }
 
   h2 {
-    font-size: 26px;
+    font-size: 24px;
     margin-bottom: 0px;
   }
-
 
   .text {
     padding-right: 0px;
@@ -45,7 +124,6 @@ const Col = styled.div`
   .above {
     margin-top: 0px;
   }
-
 
   button {
     width: 144px;
@@ -59,24 +137,24 @@ const Col = styled.div`
     flex-direction: row;
   }
   .task-item {
-   // padding-right: 20px;
+    // padding-right: 20px;
     padding-top: 30px;
   }
 `;
 
 // Slides
 
-export const SLIDE_INFO = [
-  { backgroundColor: "#ff7c7c", title: "Slide 1" },
-  { backgroundColor: "#ffb6b9", title: "Slide 2" },
-  { backgroundColor: "#8deaff", title: "Slide 3" },
-  { backgroundColor: "#ffe084", title: "Slide 4" },
-  { backgroundColor: "#d9d9d9", title: "Slide 5" },
-];
-
-const content = SLIDE_INFO[3];
-
 function DashBoard() {
+  const [index, setIndex] = useState(0);
+  const content = slideData[index];
+  const numSlides = slideData.length;
+
+  const onArrowClick = (direction) => {
+    const increment = direction === "left" ? -1 : 1;
+    const newIndex = (index + increment + numSlides) % numSlides;
+    setIndex(newIndex);
+  };
+
   return (
     <DefaultContainer>
       {/* <h1>Dashboard</h1> */}
@@ -126,16 +204,90 @@ function DashBoard() {
         </Col>
 
         <Col>
-          <h2>Motivation</h2>
-          <div>
+          <h2>Motivation Board</h2>
+          <Even>
+            <Arrow
+              direction="left"
+              clickFunction={() => onArrowClick("left")}
+            />
             <CarouselSlide content={content} />
-          </div>
+            <Arrow
+              direction="right"
+              clickFunction={() => onArrowClick("right")}
+            />
+          </Even>
         </Col>
       </Row>
       <Row>
         <div>
           <h1>Roadmap</h1>
-          <ProgressBar />
+          <Milestone />
+          <div>
+            <span className="start">
+              <ProgressBar />
+            </span>
+
+            <span className="circles">
+              {" "}
+              <img
+                className="miles"
+                alt="resume-milestone"
+                src={require("../Assets/milestone-icons/resume.png")}
+                height="40px"
+                width="40px"
+              />
+              <ProgressBar />
+            </span>
+            <span className="circles">
+              {" "}
+              <img
+                className="miles"
+                alt="resume-milestone"
+                src={require("../Assets/milestone-icons/job-description.png")}
+                height="40px"
+                width="40px"
+              />
+              <ProgressBar />
+            </span>
+            <span className="circles">
+              {" "}
+              <img
+                className="miles"
+                alt="resume-milestone"
+                src={require("../Assets/milestone-icons/meeting.png")}
+                height="40px"
+                width="40px"
+              />
+              <ProgressBar>
+                <Box />
+              </ProgressBar>
+            </span>
+            <span className="circles">
+              {" "}
+              <img
+                className="miles"
+                alt="resume-milestone"
+                src={require("../Assets/milestone-icons/summer.png")}
+                height="40px"
+                width="40px"
+              />
+              <ProgressBar />
+            </span>
+          </div>
+          <Row>
+            <Box>
+              <p>Resume Description</p>
+            </Box>
+            <Box>
+              <p>1st Round of Apps Description</p>
+            </Box>
+            <Box>
+              <p>Interview Description</p>
+            </Box>
+            <Box>
+              <p>Summer Description</p>
+            </Box>
+          </Row>
         </div>
       </Row>
     </DefaultContainer>
