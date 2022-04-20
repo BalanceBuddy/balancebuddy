@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import colors from 'colors';
-// import levels from './data/levels.js'
+import levels from './data/levels.js';
 import tasks from './data/tasks.js';
 import users from './data/users.js';
 import Level from './models/levelModel.js';
@@ -15,14 +15,19 @@ await connectDB();
 
 const importData = async () => {
   try {
-    await Level.deleteMany();
-    await Task.deleteMany();
-    await User.deleteMany();
+    // await Level.deleteMany();
+    // await Task.deleteMany();
+    // await User.deleteMany();
 
-    await User.insertMany(users);
-    await Task.insertMany(tasks);
+    // await User.insertMany(users);
+    // await Task.insertMany(tasks);
+    // await Level.insertMany(levels);
 
-    console.log('Data Imported!'.green.inverse);
+    // console.log('Data Imported!'.green.inverse);
+
+    console.log(
+      'No data imported. Must comment insert commands.'.green.inverse
+    );
     process.exit();
   } catch (error) {
     console.error(`${error}`.red.inverse);
