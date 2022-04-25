@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { listTaskDetails } from '../Actions/taskActions';
+import { useDispatch, useSelector } from 'react-redux';
 import {
+  listUserDetails,
   listUserCurrentTask,
   userGenerateNewCurrentTask,
+  userCompletedCurrentTask,
 } from '../Actions/userActions';
 
 import DefaultContainer from '../Components/DefaultContainer';
@@ -19,16 +20,40 @@ function Backend2() {
 
   useEffect(() => {
     dispatch(listUserCurrentTask(userId));
+    dispatch(listUserDetails(userId));
   }, [dispatch]);
 
-  //generate new task on button click
+  //button functions
   function newTask(e) {
     dispatch(userGenerateNewCurrentTask(userId));
     setTimeout(refreshTask, 500);
   }
 
+  function taskCompleted(e) {
+    dispatch(userCompletedCurrentTask(userId));
+    setTimeout(refreshTask, 500);
+    setTimeout(setProgressBars, 500);
+  }
+
+  function test(e) {
+    dispatch(listUserDetails(userId));
+    // const userData = thisState.userDetails;
+    // var { user } = userData;
+    console.log(thisState);
+  }
+
   function refreshTask() {
     dispatch(listUserCurrentTask(userId));
+  }
+
+  function setProgressBars() {
+    console.log('progress bar should refresh');
+    //fetch the user's roadmap data
+    const userData = thisState.userDetails;
+    const { roadmap } = userData;
+
+    //map through all levels, and check how completed they are
+    roadmap.map((level) => ({}));
   }
 
   return (
@@ -50,6 +75,8 @@ function Backend2() {
       )}
 
       <button onClick={newTask}>new task</button>
+      <button onClick={taskCompleted}>task completed</button>
+      <button onClick={test}>TEST</button>
     </DefaultContainer>
   );
 }

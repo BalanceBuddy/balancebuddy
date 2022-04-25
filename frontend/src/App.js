@@ -1,5 +1,4 @@
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
@@ -30,7 +29,10 @@ function App() {
         <Route path='/motivation-upload' element={<MotivationUpload />} />
         <Route path='/image-upload' element={<ImageUpload />} />
         <Route path='/calendar-access' element={<CalendarAccess />} />
-        <Route path='/calendar-access-accepted'element={<CalendarAccepted />} />
+        <Route
+          path='/calendar-access-accepted'
+          element={<CalendarAccepted />}
+        />
         <Route path='/calendar-access-denied' element={<CalendarDenied />} />
         <Route path='/assessment-page1' element={<AssessmentPageOne />} />
         <Route path='/assessment-page2' element={<AssessmentPageTwo />} />

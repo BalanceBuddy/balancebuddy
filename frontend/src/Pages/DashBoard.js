@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  listUserCurrentTask,
+  userGenerateNewCurrentTask,
+} from '../Actions/userActions';
 
-import DefaultContainer from "../Components/DefaultContainer";
-
-import ProgressBar from "../Components/ProgressBar";
-import Milestone from "../Components/Milestone";
-
-import Button from "../Components/Button";
-
-import CarouselSlide from "../Components/CarouselSlide";
-
-import { slideData } from "../Components/MotivationConstants";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
-import Slide from "@material-ui/core/Slide";
+import Slide from '@material-ui/core/Slide';
+import DefaultContainer from '../Components/DefaultContainer';
+import CircularProgress from '@mui/material/CircularProgress';
+import ProgressBar from '../Components/ProgressBar';
+import Milestone from '../Components/Milestone';
+import Button from '../Components/Button';
+import CarouselSlide from '../Components/CarouselSlide';
+import { slideData } from '../Components/MotivationConstants';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const Row = styled.div`
   display: flex;
@@ -90,7 +92,7 @@ const Even = styled.div`
 
 function Arrow(props) {
   const { direction, clickFunction } = props;
-  const icon = direction === "left" ? <FaChevronLeft /> : <FaChevronRight />;
+  const icon = direction === 'left' ? <FaChevronLeft /> : <FaChevronRight />;
 
   return <div onClick={clickFunction}>{icon}</div>;
 }
@@ -145,59 +147,87 @@ const Col = styled.div`
 // Slides
 
 function DashBoard() {
+  // frontend and styling
 
   const [index, setIndex] = useState(0);
   const content = slideData[index];
   const numSlides = slideData.length;
 
   const onArrowClick = (direction) => {
-    const increment = direction === "left" ? -1 : 1;
+    const increment = direction === 'left' ? -1 : 1;
     const newIndex = (index + increment + numSlides) % numSlides;
     setIndex(newIndex);
   };
+
+  // retreiving data from database
+  const userId = '625f9eed1318421b3105b2af';
+  const dispatch = useDispatch();
+
+  var thisState = useSelector((state) => state);
+  var currentTask = thisState.userCurrentTask;
+  var { loading, error, task } = currentTask;
+
+  useEffect(() => {
+    dispatch(listUserCurrentTask(userId));
+  }, [dispatch]);
+
+  //generate new task on button click
+  function newTask(e) {
+    console.log('button cliucke');
+    dispatch(userGenerateNewCurrentTask(userId));
+    setTimeout(refreshTask, 500);
+  }
+
+  function refreshTask() {
+    dispatch(listUserCurrentTask(userId));
+  }
 
   return (
     <DefaultContainer>
       {/* <h1>Dashboard</h1> */}
       <Row>
         <Col>
-          <div className="task-container">
+          <div className='task-container'>
             <div>
-              <h2>Current Task</h2>
-              <p className="text">
-                Update resume so that all recent experiences have been added.
-                Ensure that descriptions include key action words and can be
-                quantifiable.
-              </p>
+              {loading ? (
+                <CircularProgress />
+              ) : error ? (
+                <h3>{error}</h3>
+              ) : (
+                <div>
+                  <h2>{task.title}</h2>
+                  <p className='text'>{task.description}</p>
+                </div>
+              )}
             </div>
 
-            <div className="task-item">
+            <div className='task-item'>
               <Button>Task Completed</Button>
-              <Button>Change Task</Button>
+              <Button onClick={newTask}>Change Task</Button>
             </div>
           </div>
-          <div className="task-container">
+          <div className='task-container'>
             <div>
-              <h2 className="above">Resources</h2>
+              <h2 className='above'>Resources</h2>
               <div>
-                <p>
-                  <a href="https://www.w3schools.com/">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam viverra lectus.
-                  </a>
-                </p>
-                <p>
-                  <a href="https://www.w3schools.com/">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam viverra lectus.
-                  </a>
-                </p>
-                <p>
-                  <a href="https://www.w3schools.com/">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aliquam viverra lectus.
-                  </a>
-                </p>
+                {loading ? (
+                  <CircularProgress />
+                ) : error ? (
+                  <h3>{error}</h3>
+                ) : (
+                  <div>
+                    {task.resources.map((rsrc) => (
+                      <a
+                        key={rsrc._id}
+                        href={rsrc.url}
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        <h3>{rsrc.description}</h3>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
             <div></div>
@@ -208,13 +238,13 @@ function DashBoard() {
           <h2>Motivation Board</h2>
           <Even>
             <Arrow
-              direction="left"
-              clickFunction={() => onArrowClick("left")}
+              direction='left'
+              clickFunction={() => onArrowClick('left')}
             />
             <CarouselSlide content={content} />
             <Arrow
-              direction="right"
-              clickFunction={() => onArrowClick("right")}
+              direction='right'
+              clickFunction={() => onArrowClick('right')}
             />
           </Even>
         </Col>
@@ -224,53 +254,53 @@ function DashBoard() {
           <h1>Roadmap</h1>
           <Milestone />
           <div>
-            <span className="start">
+            <span className='start'>
               <ProgressBar />
             </span>
 
-            <span className="circles">
-              {" "}
+            <span className='circles'>
+              {' '}
               <img
-                className="miles"
-                alt="resume-milestone"
-                src={require("../Assets/milestone-icons/resume.png")}
-                height="40px"
-                width="40px"
+                className='miles'
+                alt='resume-milestone'
+                src={require('../Assets/milestone-icons/resume.png')}
+                height='40px'
+                width='40px'
               />
               <ProgressBar />
             </span>
-            <span className="circles">
-              {" "}
+            <span className='circles'>
+              {' '}
               <img
-                className="miles"
-                alt="resume-milestone"
-                src={require("../Assets/milestone-icons/job-description.png")}
-                height="40px"
-                width="40px"
+                className='miles'
+                alt='resume-milestone'
+                src={require('../Assets/milestone-icons/job-description.png')}
+                height='40px'
+                width='40px'
               />
               <ProgressBar />
             </span>
-            <span className="circles">
-              {" "}
+            <span className='circles'>
+              {' '}
               <img
-                className="miles"
-                alt="resume-milestone"
-                src={require("../Assets/milestone-icons/meeting.png")}
-                height="40px"
-                width="40px"
+                className='miles'
+                alt='resume-milestone'
+                src={require('../Assets/milestone-icons/meeting.png')}
+                height='40px'
+                width='40px'
               />
               <ProgressBar>
                 <Box />
               </ProgressBar>
             </span>
-            <span className="circles">
-              {" "}
+            <span className='circles'>
+              {' '}
               <img
-                className="miles"
-                alt="resume-milestone"
-                src={require("../Assets/milestone-icons/summer.png")}
-                height="40px"
-                width="40px"
+                className='miles'
+                alt='resume-milestone'
+                src={require('../Assets/milestone-icons/summer.png')}
+                height='40px'
+                width='40px'
               />
               <ProgressBar />
             </span>

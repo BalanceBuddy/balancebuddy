@@ -8,6 +8,7 @@ const levelProgressSchema = mongoose.Schema({
   isCurrentLevel: {
     type: String,
     required: true,
+    default: false,
   },
   totalTasks: {
     type: Number,
@@ -16,6 +17,7 @@ const levelProgressSchema = mongoose.Schema({
   completedTasks: {
     type: [String],
     required: true,
+    default: [],
   },
   remainingTasks: {
     type: [String],
@@ -49,58 +51,7 @@ const userSchema = mongoose.Schema(
       required: false,
       default: '0',
     },
-    roadmap: {
-      type: [levelProgressSchema],
-      required: false,
-      default: [
-        {
-          level_id: '625f9da04dccbbd952db52a3',
-          isCurrentLevel: true,
-          totalTasks: 4,
-          completedTasks: [],
-          remainingTasks: [
-            '625f97b0695041b1f4e5db69',
-            '625f97b0695041b1f4e5db6c',
-            '625f97b0695041b1f4e5db6f',
-            '625f97b0695041b1f4e5db73',
-          ],
-        },
-        {
-          level_id: '625f9da04dccbbd952db52a4',
-          isCurrentLevel: false,
-          totalTasks: 3,
-          completedTasks: [],
-          remainingTasks: [
-            '625f97b0695041b1f4e5db73',
-            '625f97b0695041b1f4e5db75',
-            '625f97b0695041b1f4e5db78',
-          ],
-        },
-        {
-          level_id: '625f9da04dccbbd952db52a5',
-          isCurrentLevel: false,
-          totalTasks: 4,
-          completedTasks: [],
-          remainingTasks: [
-            '625f97b0695041b1f4e5db73',
-            '625f97b0695041b1f4e5db7b',
-            '625f97b0695041b1f4e5db7d',
-            '625f97b0695041b1f4e5db78',
-          ],
-        },
-        {
-          level_id: '625f9da04dccbbd952db52a6',
-          isCurrentLevel: false,
-          totalTasks: 3,
-          completedTasks: [],
-          remainingTasks: [
-            '625f97b0695041b1f4e5db73',
-            '625f97b0695041b1f4e5db7b',
-            '625f97b0695041b1f4e5db7d',
-          ],
-        },
-      ],
-    },
+    roadmap: [levelProgressSchema],
     completedTasks: {
       type: [String],
       required: false,
