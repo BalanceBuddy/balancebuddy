@@ -48,22 +48,32 @@ router.get(
   '/:user_id/new_random_current_task',
   asyncHandler(async (req, res) => {
     const user = await User.findById(req.params.user_id);
-    const allTasks = await Task.find({});
 
     if (user) {
       // get user's currentTask
       const prevTaskId = user.currentTask;
 
-      //choose a new random task
-      const newTaskId =
-        allTasks[Math.floor(Math.random() * allTasks.length)].id;
-      while (newTaskId == prevTaskId) {
-        newTaskId = allTasks[Math.floor(Math.random() * allTasks.length)].id;
-      }
+      //go to the current level in the roadmap
+      const currentLevel = user.roadmap.find(
+        (x) => x.isCurrentLevel === 'true'
+      );
 
-      user.currentTask = newTaskId;
-      const updatedUser = await user.save();
-      res.json(updatedUser);
+      //if there's just one task remaining, return it
+      const tasksArray = currentLevel.remainingTasks;
+      if (tasksArray.length == 1) {
+        res.json(user);
+      } else {
+        //if there's more than one, return a random task different than the previous one
+        var newTaskId =
+          tasksArray[Math.floor(Math.random() * tasksArray.length)];
+        while (newTaskId == prevTaskId) {
+          newTaskId = tasksArray[Math.floor(Math.random() * tasksArray.length)];
+        }
+
+        user.currentTask = newTaskId;
+        const updatedUser = await user.save();
+        res.json(updatedUser);
+      }
     } else {
       res.status(404);
       throw new Error('User not found');
@@ -80,24 +90,44 @@ router.get(
     const user = await User.findById(req.params.user_id);
 
     if (user) {
-      // get user's completedTask
-      const prevCompletedTasks = user.completedTasks;
-      const prevCurrentTask = user.currentTask;
+      //get currentTask id
+      const completedTask = user.currentTask;
 
-      //add currentTask to completedTasks
-      user.completedTasks = [...prevCompletedTasks, prevCurrentTask];
+      //go to the current level object
+      var level = user.roadmap.find((x) => x.isCurrentLevel === 'true');
+      const level_index = user.roadmap.indexOf(level);
 
-      //choose a new random task
-      const allTasks = await Task.find({});
-      const newTaskId =
-        allTasks[Math.floor(Math.random() * allTasks.length)].id;
-      while (newTaskId == prevCurrentTask) {
-        newTaskId = allTasks[Math.floor(Math.random() * allTasks.length)].id;
+      //delete task from remainingTasks
+      const completedTask_index = level.remainingTasks.indexOf(completedTask);
+      if (completedTask_index > -1) {
+        level.remainingTasks.splice(completedTask_index, 1);
       }
 
-      //set new task
-      user.currentTask = newTaskId;
+      //add task to completedTasks
+      level.completedTasks = [...level.completedTasks, completedTask];
 
+      //if there's no remainingTasks, set current level as complete, and go to next
+      if (level.remainingTasks.length == 0) {
+        level.isCurrentLevel = 'false';
+        if (user.roadmap[level_index + 1]) {
+          level = user.roadmap[level_index + 1];
+          level.isCurrentLevel = 'true';
+          user.currentLevel = level.level_id;
+        }
+      }
+
+      //choose a new random task
+      //if there's just one task remaining, return it
+      const tasksArray = level.remainingTasks;
+      var newTaskId = tasksArray[Math.floor(Math.random() * tasksArray.length)];
+
+      if (tasksArray.length == 1) {
+        while (newTaskId == completedTask) {
+          newTaskId = tasksArray[Math.floor(Math.random() * tasksArray.length)];
+        }
+      }
+
+      user.currentTask = newTaskId;
       const updatedUser = await user.save();
       res.json(updatedUser);
     } else {

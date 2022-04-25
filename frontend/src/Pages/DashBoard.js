@@ -173,9 +173,8 @@ function DashBoard() {
 
   //generate new task on button click
   function newTask(e) {
-    console.log('button cliucke');
     dispatch(userGenerateNewCurrentTask(userId));
-    setTimeout(refreshTask, 500);
+    setTimeout(refreshTask, 800);
   }
 
   function refreshTask() {
