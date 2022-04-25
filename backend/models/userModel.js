@@ -6,7 +6,7 @@ const levelProgressSchema = mongoose.Schema({
     required: true,
   },
   isCurrentLevel: {
-    type: String,
+    type: Boolean,
     required: true,
     default: false,
   },
@@ -46,20 +46,11 @@ const userSchema = mongoose.Schema(
       required: false,
       default: '0',
     },
-    currentLevel: {
-      type: String,
-      required: false,
-      default: '0',
-    },
-    roadmap: [levelProgressSchema],
-    completedTasks: {
-      type: [String],
-      required: false,
-    },
     motivation: {
       type: [String],
       required: false,
     },
+    roadmap: [levelProgressSchema],
   },
   {
     timestaps: true,

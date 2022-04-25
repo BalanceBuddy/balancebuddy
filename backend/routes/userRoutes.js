@@ -54,9 +54,7 @@ router.get(
       const prevTaskId = user.currentTask;
 
       //go to the current level in the roadmap
-      const currentLevel = user.roadmap.find(
-        (x) => x.isCurrentLevel === 'true'
-      );
+      const currentLevel = user.roadmap.find((x) => x.isCurrentLevel == true);
 
       //if there's just one task remaining, return it
       const tasksArray = currentLevel.remainingTasks;
@@ -94,7 +92,7 @@ router.get(
       const completedTask = user.currentTask;
 
       //go to the current level object
-      var level = user.roadmap.find((x) => x.isCurrentLevel === 'true');
+      var level = user.roadmap.find((x) => x.isCurrentLevel === true);
       const level_index = user.roadmap.indexOf(level);
 
       //delete task from remainingTasks
@@ -108,11 +106,11 @@ router.get(
 
       //if there's no remainingTasks, set current level as complete, and go to next
       if (level.remainingTasks.length == 0) {
-        level.isCurrentLevel = 'false';
+        level.isCurrentLevel = false;
         if (user.roadmap[level_index + 1]) {
           level = user.roadmap[level_index + 1];
-          level.isCurrentLevel = 'true';
-          user.currentLevel = level.level_id;
+          level.isCurrentLevel = true;
+          // user.currentLevel = level.level_id;
         }
       }
 

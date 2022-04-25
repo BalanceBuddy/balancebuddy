@@ -3,6 +3,7 @@ const users = [
     name: 'Tern Shepp',
     email: 'tshepp@u.rochester.edu',
     isAdmin: true,
+    currentTask: '625f97b0695041b1f4e5db6c',
     roadmap: [
       {
         level_id: '625f9da04dccbbd952db52a3',
@@ -55,12 +56,14 @@ const users = [
   {
     name: 'Bobby Yeah',
     email: 'byeah@u.rochester.edu',
-    isAdmin: true,
+    isAdmin: false,
+    currentTask: '625f97b0695041b1f4e5db6c',
   },
   {
     name: 'Jasper Seams',
     email: 'jseams@u.rochester.edu',
     isAdmin: false,
+    currentTask: '625f97b0695041b1f4e5db6c',
   },
 ];
 

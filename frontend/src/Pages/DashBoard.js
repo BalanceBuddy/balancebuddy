@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   listUserCurrentTask,
   userGenerateNewCurrentTask,
+  userCompletedCurrentTask,
 } from '../Actions/userActions';
 
 import Slide from '@material-ui/core/Slide';
@@ -160,7 +161,7 @@ function DashBoard() {
   };
 
   // retreiving data from database
-  const userId = '625f9eed1318421b3105b2af';
+  const userId = '62663c57f1e8d6589d40b7cf';
   const dispatch = useDispatch();
 
   var thisState = useSelector((state) => state);
@@ -179,6 +180,12 @@ function DashBoard() {
 
   function refreshTask() {
     dispatch(listUserCurrentTask(userId));
+  }
+
+  //complete task on button click
+  function completeTask(e) {
+    dispatch(userCompletedCurrentTask(userId));
+    setTimeout(refreshTask, 800);
   }
 
   return (
@@ -201,7 +208,7 @@ function DashBoard() {
             </div>
 
             <div className='task-item'>
-              <Button>Task Completed</Button>
+              <Button onClick={completeTask}>Task Completed</Button>
               <Button onClick={newTask}>Change Task</Button>
             </div>
           </div>

@@ -26,7 +26,7 @@ const importData = async () => {
     // console.log('Data Imported!'.green.inverse);
 
     console.log(
-      'No data imported. Must comment insert commands.'.green.inverse
+      'No data imported. Must uncomment insert commands.'.green.inverse
     );
     process.exit();
   } catch (error) {
@@ -37,11 +37,15 @@ const importData = async () => {
 
 const destroyData = async () => {
   try {
-    await Level.deleteMany();
-    await Task.deleteMany();
-    await User.deleteMany();
+    // await Level.deleteMany();
+    // await Task.deleteMany();
+    // await User.deleteMany();
 
-    console.log('Data Destroyed!'.red.inverse);
+    // console.log('Data Destroyed!'.red.inverse);
+
+    console.log(
+      'No data destroyed. Must uncomment delete commands.'.green.inverse
+    );
     process.exit();
   } catch (error) {
     console.error(`${error}`.red.inverse);
