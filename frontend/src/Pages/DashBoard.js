@@ -7,12 +7,11 @@ import {
   userCompletedCurrentTask,
 } from '../Actions/userActions';
 
-import Slide from '@material-ui/core/Slide';
 import DefaultContainer from '../Components/DefaultContainer';
 import CircularProgress from '@mui/material/CircularProgress';
 import ProgressBar from '../Components/ProgressBar';
-import Milestone from '../Components/Milestone';
 import Button from '../Components/Button';
+import Roadmap from '../Components/Roadmap';
 import CarouselSlide from '../Components/CarouselSlide';
 import { slideData } from '../Components/MotivationConstants';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -166,6 +165,7 @@ function DashBoard() {
 
   var thisState = useSelector((state) => state);
   var currentTask = thisState.userCurrentTask;
+  // var roadmap = thisState.userRoadmap;
   var { loading, error, task } = currentTask;
 
   useEffect(() => {
@@ -190,7 +190,6 @@ function DashBoard() {
 
   return (
     <DefaultContainer>
-      {/* <h1>Dashboard</h1> */}
       <Row>
         <Col>
           <div className='task-container'>
@@ -255,77 +254,10 @@ function DashBoard() {
           </Even>
         </Col>
       </Row>
-      <Row>
-        <div>
-          <h1>Roadmap</h1>
-          <Milestone />
-          <div>
-            <span className='start'>
-              <ProgressBar />
-            </span>
 
-            <span className='circles'>
-              {' '}
-              <img
-                className='miles'
-                alt='resume-milestone'
-                src={require('../Assets/milestone-icons/resume.png')}
-                height='40px'
-                width='40px'
-              />
-              <ProgressBar />
-            </span>
-            <span className='circles'>
-              {' '}
-              <img
-                className='miles'
-                alt='resume-milestone'
-                src={require('../Assets/milestone-icons/job-description.png')}
-                height='40px'
-                width='40px'
-              />
-              <ProgressBar />
-            </span>
-            <span className='circles'>
-              {' '}
-              <img
-                className='miles'
-                alt='resume-milestone'
-                src={require('../Assets/milestone-icons/meeting.png')}
-                height='40px'
-                width='40px'
-              />
-              <ProgressBar>
-                <Box />
-              </ProgressBar>
-            </span>
-            <span className='circles'>
-              {' '}
-              <img
-                className='miles'
-                alt='resume-milestone'
-                src={require('../Assets/milestone-icons/summer.png')}
-                height='40px'
-                width='40px'
-              />
-              <ProgressBar />
-            </span>
-          </div>
-          <Row>
-            <Box>
-              <p>Resume Description</p>
-            </Box>
-            <Box>
-              <p>1st Round of Apps Description</p>
-            </Box>
-            <Box>
-              <p>Interview Description</p>
-            </Box>
-            <Box>
-              <p>Summer Description</p>
-            </Box>
-          </Row>
-        </div>
+      <h1>Roadmap</h1>
+      <Row>
+        <Roadmap />
       </Row>
     </DefaultContainer>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import LinearProgress, {
@@ -9,10 +8,11 @@ import LinearProgress, {
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   zIndex: -1,
   height: 15,
-  width: 110,
+  // width: 110,
+  width: '100%',
   borderRadius: 10,
-  marginLeft: '56px',
-  marginTop: '-50px',
+  // marginLeft: '56px',
+  // marginTop: '-50px',
 
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor:
@@ -24,14 +24,22 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   },
 }));
 
-function ProgressBar() {
+function ProgressBar({ value, width, ...props }) {
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box
+        sx={{ flexGrow: 1 }}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          width: width || '100px',
+        }}
+        {...props}
+      >
         <br />
         <BorderLinearProgress
           variant='determinate'
-          value={0}
+          value={value || 50}
           backgroundColor='dark'
         />
       </Box>

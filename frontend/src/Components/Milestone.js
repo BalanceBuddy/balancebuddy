@@ -1,36 +1,43 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-const circle = styled.div`
-  height: 50px;
-  width: 50px;
-  background-color: #62bdca;
-  border-radius: 50%;
-  display: inline-block;
-  padding: 5px;
-  width: 44;
-  height: 44;
-  border-radius: 44/2;
+const StyledMilestone = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: -40px;
+  left: -15px;
+`;
 
-  .dot {
-    height: 500px;
-    width: 500px;
-    background-color: #62bdca;
-    border-radius: 50%;
+const Title = styled.h4`
+  color: lightGray;
+  width: 100px;
+`;
 
-    padding: 5px;
+const Circle = styled.div`
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 50%;
+    height: auto;
   }
 `;
-function Milestone() {
+
+function Milestone({ title, img, ...props }) {
   return (
-    <>
-      <circle>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </circle>
-    </>
+    <StyledMilestone {...props}>
+      <Title>{title}</Title>
+      <Circle>
+        <img src={img} />
+      </Circle>
+    </StyledMilestone>
   );
 }
 
