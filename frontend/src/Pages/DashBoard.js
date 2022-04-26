@@ -5,6 +5,7 @@ import {
   listUserCurrentTask,
   userGenerateNewCurrentTask,
   userCompletedCurrentTask,
+  listUserDetails,
 } from '../Actions/userActions';
 
 import DefaultContainer from '../Components/DefaultContainer';
@@ -165,11 +166,12 @@ function DashBoard() {
 
   var thisState = useSelector((state) => state);
   var currentTask = thisState.userCurrentTask;
-  // var roadmap = thisState.userRoadmap;
+  var roadmap = thisState.userDetails.user.roadmap;
   var { loading, error, task } = currentTask;
 
   useEffect(() => {
     dispatch(listUserCurrentTask(userId));
+    dispatch(listUserDetails(userId));
   }, [dispatch]);
 
   //generate new task on button click
@@ -257,7 +259,7 @@ function DashBoard() {
 
       <h1>Roadmap</h1>
       <Row>
-        <Roadmap />
+        <Roadmap data={roadmap} />
       </Row>
     </DefaultContainer>
   );

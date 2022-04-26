@@ -13,10 +13,7 @@ import {
   USER_COMPLETED_TASK_FAIL,
 } from '../Constants/userConstants';
 
-export const userDetailsReducer = (
-  state = { user: { roadmap: [] } },
-  action
-) => {
+export const userDetailsReducer = (state = { user: {} }, action) => {
   switch (action.type) {
     case USER_DETAILS_REQUEST:
       return { loading: true, ...state };
