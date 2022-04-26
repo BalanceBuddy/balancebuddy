@@ -1,7 +1,15 @@
 import mongoose from 'mongoose';
 
 const levelSchema = mongoose.Schema({
-  goalTitle: {
+  title:{
+    type: String,
+    required: true,
+  },
+  description:{
+    type: String,
+    required: true,
+  },
+  icon:{
     type: String,
     required: true,
   },

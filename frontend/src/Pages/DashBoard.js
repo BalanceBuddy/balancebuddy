@@ -7,6 +7,7 @@ import {
   userCompletedCurrentTask,
   listUserDetails,
 } from '../Actions/userActions';
+import { listLevels } from '../Actions/levelActions';
 
 import DefaultContainer from '../Components/DefaultContainer';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -162,17 +163,19 @@ function DashBoard() {
   };
 
   // retreiving data from database
-  const userId = '62676953fad2994f34150e0f';
+  const userId = '6267c09216cd5996065d80c4';
   const dispatch = useDispatch();
 
   var thisState = useSelector((state) => state);
   var currentTask = thisState.userCurrentTask;
-  var roadmap = thisState.userDetails.user.roadmap;
+  var roadmapData = thisState.userDetails.user.roadmap;
+  var levelsData = thisState.levelList.levels;
   var { loading, error, task } = currentTask;
 
   useEffect(() => {
     dispatch(listUserCurrentTask(userId));
     dispatch(listUserDetails(userId));
+    dispatch(listLevels());
   }, [dispatch]);
 
   //generate new task on button click
@@ -291,7 +294,7 @@ function DashBoard() {
 
       <h1>Roadmap</h1>
       <Row>
-        <Roadmap data={roadmap} />
+        <Roadmap roadmapData={roadmapData} levelData={levelsData} />
       </Row>
     </DefaultContainer>
   );

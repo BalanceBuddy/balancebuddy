@@ -5,6 +5,7 @@ import connectDB from './config/db.js';
 import levels from './data/levels.js';
 import taskRoutes from './routes/taskRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import levelRoutes from './routes/levelRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import cors from 'cors';
 const corsOptions = {
@@ -25,11 +26,7 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-app.get('/api/level/:level', (req, res) => {
-  const levelTasks = levels.find((x) => x.level === req.params.level);
-  res.json(levelTasks);
-});
-
+app.use('/api/levels', levelRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/user', userRoutes);
 

@@ -1,6 +1,9 @@
 const levels = [
   {
-    goalTitle: 'Initial Document Prep',
+    title: 'Initial Document Prep',
+    description:
+      'Resume is brought up to snuff, CV will be in superb shape, craft and draft Initial Cover Letter.',
+    icon: 'resume.png',
     tasks: [
       '625f97b0695041b1f4e5db69',
       '625f97b0695041b1f4e5db6c',
@@ -9,7 +12,10 @@ const levels = [
     ],
   },
   {
-    goalTitle: '1st Round of Job Apps Complete',
+    title: '1st Round of Job Apps Complete',
+    description:
+      'Look & apply to job postings, write specific cover letter, Network, begin interview prep.',
+    icon: 'job-description.png',
     tasks: [
       '625f97b0695041b1f4e5db73',
       '625f97b0695041b1f4e5db75',
@@ -17,7 +23,10 @@ const levels = [
     ],
   },
   {
-    goalTitle: 'Interview Process Complete',
+    title: 'Interview Process Complete',
+    description:
+      'More intensive focus on interview prep, network more and apply, reply to any emails associated with postings.',
+    icon: 'meeting.png',
     tasks: [
       '625f97b0695041b1f4e5db73',
       '625f97b0695041b1f4e5db7b',
@@ -26,7 +35,10 @@ const levels = [
     ],
   },
   {
-    goalTitle: 'Finalize Summer Plans',
+    title: 'Finalize Summer Plans',
+    description:
+      'Tips after recieving a job offer, other tips if you don’t get an offer.',
+    icon: 'summer.png',
     tasks: [
       '625f97b0695041b1f4e5db73',
       '625f97b0695041b1f4e5db7b',

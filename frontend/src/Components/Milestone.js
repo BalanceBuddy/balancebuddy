@@ -15,7 +15,7 @@ const StyledMilestone = styled.div`
 `;
 
 const Title = styled.h4`
-  color: lightGray;
+  color: gray;
   width: 100px;
 `;
 

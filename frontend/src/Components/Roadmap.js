@@ -6,20 +6,25 @@ const StyledRoadmap = styled.div`
   display: flex;
 `;
 
-function Roadmap({ data, children, ...props }) {
-  console.log('data', data);
+function Roadmap({ roadmapData, levelData, children, ...props }) {
   var rightPosition = -35;
   return (
     <StyledRoadmap {...props}>
-      {data
-        ? data.map((level) => {
+      {roadmapData
+        ? roadmapData.map((level) => {
+            const levelId = level.level_id;
+            var levelInfo = levelData.find((x) => x._id === levelId);
             rightPosition = rightPosition + 35;
             const progress =
               (level.completedTasks.length / level.totalTasks) * 100;
+            console.log('levelInfo', levelInfo);
             return (
               <RoadmapSection
                 style={{ position: 'relative', right: `${rightPosition}px` }}
                 value={progress}
+                title={levelInfo.title}
+                img={require(`../Assets/milestone-icons/${levelInfo.icon}`)}
+                description={levelInfo.description}
                 complete={progress === 100 ? true : false}
               />
             );

@@ -6,7 +6,7 @@ const users = [
     currentTask: '625f97b0695041b1f4e5db6c',
     roadmap: [
       {
-        level_id: '625f9da04dccbbd952db52a3',
+        level_id: '6267c01e6393175ccadddd0b',
         isCurrentLevel: true,
         totalTasks: 4,
         completedTasks: [],
@@ -18,7 +18,7 @@ const users = [
         ],
       },
       {
-        level_id: '625f9da04dccbbd952db52a4',
+        level_id: '6267c01e6393175ccadddd0c',
         isCurrentLevel: false,
         totalTasks: 3,
         completedTasks: [],
@@ -29,7 +29,7 @@ const users = [
         ],
       },
       {
-        level_id: '625f9da04dccbbd952db52a5',
+        level_id: '6267c01e6393175ccadddd0d',
         isCurrentLevel: false,
         totalTasks: 4,
         completedTasks: [],
@@ -41,7 +41,7 @@ const users = [
         ],
       },
       {
-        level_id: '625f9da04dccbbd952db52a6',
+        level_id: '6267c01e6393175ccadddd0e',
         isCurrentLevel: false,
         totalTasks: 3,
         completedTasks: [],

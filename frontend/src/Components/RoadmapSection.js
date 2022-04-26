@@ -24,24 +24,23 @@ const InfoBubble = styled.div`
   left: -25px;
 `;
 
-function RoadmapSection({ value, complete, ...props }) {
+function RoadmapSection({
+  value,
+  title,
+  img,
+  description,
+  complete,
+  ...props
+}) {
   return (
     <StyledRoadmapSection {...props}>
       <ProgressSection>
         <ProgressBar value={value} width={'150px'} />
-        <Milestone
-          title='Resume Description'
-          img={require('../Assets/milestone-icons/resume.png')}
-          complete={complete}
-        ></Milestone>
+        <Milestone title={title} img={img} complete={complete}></Milestone>
       </ProgressSection>
 
       <InfoBubble>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl
-          eros, pulvinar.Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit.
-        </p>
+        <p>{description}</p>
       </InfoBubble>
     </StyledRoadmapSection>
   );

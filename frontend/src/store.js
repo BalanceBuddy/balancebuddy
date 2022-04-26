@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { taskListReducer, taskDetailsReducer } from './Reducers/taskReducers';
+import { levelListReducer } from './Reducers/levelReducers';
 import {
   userDetailsReducer,
   userCurrentTaskReducer,
@@ -16,6 +17,7 @@ const reducer = combineReducers({
   userCurrentTask: userCurrentTaskReducer,
   generateNewTask: generateNewTaskReducer,
   completedCurrentTask: completedCurrentTaskReducer,
+  levelList: levelListReducer,
 });
 
 const initialState = {};
