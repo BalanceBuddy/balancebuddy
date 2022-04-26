@@ -8,6 +8,10 @@ const StyledMilestone = styled.div`
   position: relative;
   top: -40px;
   left: -15px;
+
+  .completed {
+    background-color: #62bdca;
+  }
 `;
 
 const Title = styled.h4`
@@ -30,11 +34,12 @@ const Circle = styled.div`
   }
 `;
 
-function Milestone({ title, img, ...props }) {
+function Milestone({ title, complete, img, ...props }) {
   return (
     <StyledMilestone {...props}>
       <Title>{title}</Title>
-      <Circle>
+      {/* <Circle style={{ backgroundColor: complete ? 'pink' : null }}> */}
+      <Circle className={complete ? 'completed' : null}>
         <img src={img} />
       </Circle>
     </StyledMilestone>

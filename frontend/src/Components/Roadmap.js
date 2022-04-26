@@ -6,20 +6,6 @@ const StyledRoadmap = styled.div`
   display: flex;
 `;
 
-function buildRoadmap(data) {
-  var firstExists = false;
-  data.map((level) => {
-    if (!firstExists) {
-      firstExists = true;
-      console.log('here1');
-      return <RoadmapSection first />;
-    } else {
-      console.log('here2');
-      return <RoadmapSection />;
-    }
-  });
-}
-
 function Roadmap({ data, children, ...props }) {
   console.log('data', data);
   var rightPosition = -35;
@@ -28,18 +14,17 @@ function Roadmap({ data, children, ...props }) {
       {data
         ? data.map((level) => {
             rightPosition = rightPosition + 35;
+            const progress =
+              (level.completedTasks.length / level.totalTasks) * 100;
             return (
               <RoadmapSection
                 style={{ position: 'relative', right: `${rightPosition}px` }}
+                value={progress}
+                complete={progress === 100 ? true : false}
               />
             );
           })
         : null}
-
-      {/* <RoadmapSection />
-      <RoadmapSection style={{ position: 'relative', right: '35px' }} />
-      <RoadmapSection style={{ position: 'relative', right: '70px' }} />
-      <RoadmapSection style={{ position: 'relative', right: '105px' }} /> */}
     </StyledRoadmap>
   );
 }

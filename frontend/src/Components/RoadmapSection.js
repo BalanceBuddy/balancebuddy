@@ -24,17 +24,15 @@ const InfoBubble = styled.div`
   left: -25px;
 `;
 
-function RoadmapSection({ children, first, ...props }) {
+function RoadmapSection({ value, complete, ...props }) {
   return (
-    <StyledRoadmapSection
-      {...props}
-      // style={{ position: 'relative', left: '-35px' }}
-    >
+    <StyledRoadmapSection {...props}>
       <ProgressSection>
-        <ProgressBar value={20} width={'150px'} />
+        <ProgressBar value={value} width={'150px'} />
         <Milestone
           title='Resume Description'
           img={require('../Assets/milestone-icons/resume.png')}
+          complete={complete}
         ></Milestone>
       </ProgressSection>
 

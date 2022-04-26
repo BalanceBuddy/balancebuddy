@@ -8,11 +8,8 @@ import LinearProgress, {
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   zIndex: -1,
   height: 15,
-  // width: 110,
   width: '100%',
   borderRadius: 10,
-  // marginLeft: '56px',
-  // marginTop: '-50px',
 
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor:
@@ -39,7 +36,7 @@ function ProgressBar({ value, width, ...props }) {
         <br />
         <BorderLinearProgress
           variant='determinate'
-          value={value || 50}
+          value={value}
           backgroundColor='dark'
         />
       </Box>

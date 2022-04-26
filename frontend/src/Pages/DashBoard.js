@@ -161,7 +161,7 @@ function DashBoard() {
   };
 
   // retreiving data from database
-  const userId = '62663c57f1e8d6589d40b7cf';
+  const userId = '62676953fad2994f34150e0f';
   const dispatch = useDispatch();
 
   var thisState = useSelector((state) => state);
@@ -187,7 +187,12 @@ function DashBoard() {
   //complete task on button click
   function completeTask(e) {
     dispatch(userCompletedCurrentTask(userId));
+    setTimeout(refreshRoadmap, 800);
     setTimeout(refreshTask, 800);
+  }
+
+  function refreshRoadmap(e) {
+    dispatch(listUserDetails(userId));
   }
 
   return (
