@@ -10,12 +10,13 @@ import {
 
 import DefaultContainer from '../Components/DefaultContainer';
 import CircularProgress from '@mui/material/CircularProgress';
-import ProgressBar from '../Components/ProgressBar';
 import Button from '../Components/Button';
 import Roadmap from '../Components/Roadmap';
 import CarouselSlide from '../Components/CarouselSlide';
 import { slideData } from '../Components/MotivationConstants';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import IconButton from '@mui/material/IconButton';
+import RefreshIcon from '@material-ui/icons/Refresh';
 
 const Row = styled.div`
   display: flex;
@@ -195,12 +196,22 @@ function DashBoard() {
     dispatch(listUserDetails(userId));
   }
 
+  //refresh button
+  function refreshAll(e) {
+    refreshRoadmap();
+    refreshTask();
+  }
+
   return (
     <DefaultContainer>
       <Row>
         <Col>
           <div className='task-container'>
-            <div>
+            <div
+              style={{
+                marginRight: '20px',
+              }}
+            >
               {loading ? (
                 <CircularProgress />
               ) : error ? (
@@ -213,7 +224,23 @@ function DashBoard() {
               )}
             </div>
 
-            <div className='task-item'>
+            <div
+              className='task-item'
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-end',
+                padding: '0',
+              }}
+            >
+              <IconButton
+                style={{ width: 'auto' }}
+                onClick={() => {
+                  refreshAll();
+                }}
+              >
+                <RefreshIcon></RefreshIcon>
+              </IconButton>
               <Button onClick={completeTask}>Task Completed</Button>
               <Button onClick={newTask}>Change Task</Button>
             </div>

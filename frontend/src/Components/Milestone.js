@@ -38,7 +38,6 @@ function Milestone({ title, complete, img, ...props }) {
   return (
     <StyledMilestone {...props}>
       <Title>{title}</Title>
-      {/* <Circle style={{ backgroundColor: complete ? 'pink' : null }}> */}
       <Circle className={complete ? 'completed' : null}>
         <img src={img} />
       </Circle>

@@ -6,12 +6,20 @@ import levels from './data/levels.js';
 import taskRoutes from './routes/taskRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import cors from 'cors';
+const corsOptions = {
+  origin: '*',
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
 dotenv.config();
 
 await connectDB();
 
 const app = express();
+
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
   res.send('API is running...');
