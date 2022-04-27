@@ -33,14 +33,14 @@ function Signup() {
           ></input>
           <label for='inputPassword'>Password</label>
           <input
-            type='text'
+            type='password'
             class='form-control'
             id='inputPassword'
             placeholder='Password'
           ></input>
           <label for='inputConfirmPassword'>Confirm Password</label>
           <input
-            type='email'
+            type='password'
             class='form-control'
             id='inputConfirmPassword'
             placeholder='Confirm Password'
